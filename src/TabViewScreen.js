@@ -24,6 +24,7 @@ export default class TabViewScreen extends React.Component {
     render() {
         return (
             <TabView
+                tabBarPosition= 'bottom'
                 navigationState={this.state}
                 renderScene={SceneMap({
                     first: ProfileScreen,

@@ -6,20 +6,27 @@ import { Ionicons } from '@expo/vector-icons';
 
 const ProfileScreen = () => (
       <View style={styles.container}>
-        <View>
-            <View style={styles.top}>
-            </View>
+        <View style = {{backgroundColor: 'white', flex:1, width:'100%'}}>
+            {/* <View style={styles.top}>
+            </View> */}
             <View style={styles.pictureholder}>
                 <Ionicons name='md-person' size={150} color='#66ffa6'/>
             </View>
+        </View>
+        <View style = {{backgroundColor: '#C0C0C0', flex:1, width:'100%'}}>
             <View style={styles.nameholder}>
-                <Text style={styles.name}>TACO</Text>
+                <Text
+                  // adjustsFontSizeToFit
+                  // numberOfLines = {1}
+                  style={styles.name}>cvjghvchrtfgcvcutj</Text>
             </View>
+
             <View style={styles.nameholder}>
                 <Text style={styles.othertext}>Service Hours: 0</Text>
             </View>
-            <View style={styles.bottom}>
-            </View>
+
+            {/* <View style={styles.bottom}>
+            </View> */}
         </View>
       </View>
 );
@@ -27,44 +34,46 @@ const ProfileScreen = () => (
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   pictureholder: {
       flex: 2,
-      backgroundColor: '#fff',
+      // backgroundColor: '#fff',
       alignItems: 'center',
       justifyContent: 'center',
   },
   nameholder: {
       flex: 1,
-      backgroundColor: '#00b248',
+      // backgroundColor: '#00b248',
       alignItems: 'center',
       justifyContent: 'center',
   },
   top: {
-      height: 75,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      flex: 1,
+      // height: 75,
+      // backgroundColor: '#fff',
+      // alignItems: 'center',
+      // justifyContent: 'center',
   },
   bottom: {
-      height: 100,
-      backgroundColor: '#00b248',
-      alignItems: 'center',
-      justifyContent: 'center',
+    flex:1,
+      // height: 100,
+      // backgroundColor: '#00b248',
+      // alignItems: 'center',
+      // justifyContent: 'center',
   },
   picture: {
       width: 200,
       height: 200,
   },
   name: {
-      color: '#66ffa6',
+      color: '#00b248',
       fontSize: 100,
   },
   othertext: {
-      color: '#66ffa6',
+      color: '#00b248',
       fontSize: 30
   }
 });
