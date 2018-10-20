@@ -12,9 +12,21 @@ export default class LoginScreen extends React.Component {
   static navigationOptions = {
     title: 'GoodDeed',
   };
-  state = { email: '', username: '', password: '', errorMessage: null }
+  state = { 
+    emailBuffer: '', 
+    usernameBuffer: '',
+    passwordBuffer: '', 
+    serviceHoursBuffer: 0,
+    errorMessage: null 
+  }
   handleSignup = () => {
-    // TODO: Firebase
+    userfire = this.state.emailBuffer;
+      
+    firebase.database().ref('users/' + this.state.usernameBuffer + '/').set({
+      email: this.state.emailBuffer,
+      password: this.state.passwordBuffer,
+      serviceHours: this.state.serviceHoursBuffer
+    });
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -42,7 +54,7 @@ export default class LoginScreen extends React.Component {
             underlineColorAndroid='transparent'
             autoCorrect={false}
             style={styles.textInput}
-            onChangeText={email => this.setState({ email })}
+            onChangeText={emailBuffer => this.setState({ emailBuffer })}
             value={this.state.email}
           />
         </View>
@@ -54,7 +66,7 @@ export default class LoginScreen extends React.Component {
             underlineColorAndroid='transparent'
             autoCorrect={false}
             style={styles.textInput}
-            onChangeText={username => this.setState({ username })}
+            onChangeText={usernameBuffer => this.setState({ usernameBuffer })}
             value={this.state.username}
           />
         </View>
@@ -67,7 +79,7 @@ export default class LoginScreen extends React.Component {
             underlineColorAndroid='transparent'
             autoCorrect={false}
             style={styles.textInput}
-            onChangeText={password => this.setState({ password })}
+            onChangeText={passwordBuffer => this.setState({ passwordBuffer })}
             value={this.state.password}
           />
         </View>
