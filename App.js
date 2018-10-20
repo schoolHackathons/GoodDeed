@@ -1,33 +1,35 @@
 import React from 'react';
-import {Button, StyleSheet, Text, View, Dimensions } from 'react-native';
-import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+import { StyleSheet, Text, View } from 'react-native';
+import {MapView} from 'expo';
 
-import ProfileScreen from './ProfileScreen.js';
-import MapScreen from './MapScreen.js';
-import SocialScreen from './SocialScreen.js';
- 
-export default class TabViewExample extends React.Component {
-  state = {
-    index: 0,
-    routes: [
-      { key: 'first', title: 'Profile' },
-      { key: 'second', title: 'Map' },
-      { key: 'third', title: 'Social' },
-    ],
-  };
- 
+export default class App extends React.Component {
   render() {
     return (
-      <TabView
-        navigationState={this.state}
-        renderScene={SceneMap({
-          first: ProfileScreen,
-          second: MapScreen,
-          third: SocialScreen,
-        })}
-        onIndexChange={index => this.setState({ index })}
-        //initialLayout={{ width: Dimensions.get('window').width }}
-      />
+      <View style={{flex:1, overflow:'hidden'}}>
+        <View style={{flex: 1}}>
+
+        </View>
+        <View style={{overflow: 'hidden',flex: 4, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', shadowOpacity: 50, shadowRadius: 5}}>
+        <MapView
+        style={{ overflow: 'hidden', width: '85%', height: '85%',borderRadius: 15, borderWidth: 2, borderColor: 'white'}}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+        />
+        </View>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#000000',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
