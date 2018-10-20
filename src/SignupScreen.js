@@ -7,11 +7,13 @@ import TabViewScreen from './TabViewScreen.js';
 import ProfileScreen from './ProfileScreen.js';
 import MapScreen from './MapScreen.js';
 import SocialScreen from './SocialScreen.js';
+import firebase from './Firebase.js';
 
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
     title: 'GoodDeed',
   };
+
   state = { 
     emailBuffer: '', 
     usernameBuffer: '',
@@ -19,7 +21,9 @@ export default class LoginScreen extends React.Component {
     serviceHoursBuffer: 0,
     errorMessage: null 
   }
+
   handleSignup = () => {
+    //console.log(firebase.database().ref('users/' + 'zprius' + '/'));
     userfire = this.state.emailBuffer;
       
     firebase.database().ref('users/' + this.state.usernameBuffer + '/').set({
@@ -27,21 +31,40 @@ export default class LoginScreen extends React.Component {
       password: this.state.passwordBuffer,
       serviceHours: this.state.serviceHoursBuffer
     });
+    console.log(
+    firebase.database().ref('users/' + this.state.usernameBuffer + '/').get({
+      email
+    })
+    )
+    
+    /*
+    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
+      '<gooddeed-2afa7>',
+      { permissions: ['public_profile'] }
+    );
+
+    if (type === 'success') {
+      // Build Firebase credential with the Facebook access token.
+      const credential = firebase.auth.FacebookAuthProvider.credential(token);
+
+      // Sign in with credential from the Facebook user.
+      firebase.auth().signInWithCredential(credential).catch((error) => {
+        console.log('Error');
+      });
+    }
+    */
   }
+
   render() {
-    const { navigate } = this.props.navigation;
     return (
       <View>
       <Button
         color='#00b248'
         title="Already have an account?  Log in"
         onPress={() =>
-          navigate('Login', {})
+          this.props.navigationnavigate('Login', {})
         }
       />
-      <View style={styles.container}>
-        <Text style={styles.title}>Sign Up</Text>
-      </View>
       <View style={styles.container}>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
@@ -49,7 +72,7 @@ export default class LoginScreen extends React.Component {
           </Text>}
         <View style={styles.textBox}>
           <TextInput
-            placeholder="Email"
+            placeholder="  Email"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -61,7 +84,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.spacer}></View>
         <View style={styles.textBox}>
           <TextInput
-            placeholder="Username"
+            placeholder="  Username"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -74,7 +97,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.textBox}>
           <TextInput
             secureTextEntry
-            placeholder="Password"
+            placeholder="  Password"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -98,10 +121,6 @@ export default class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 80,
-    textShadowColor: 'black'
-  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -110,8 +129,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 20,
-    marginTop: 8,
-    textAlign: 'center'
+    marginTop: 8
   },
   textBox: {
     borderStyle: 'solid',
