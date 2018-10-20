@@ -19,7 +19,7 @@ export default class LoginScreen extends React.Component {
     serviceHoursBuffer: 0,
     errorMessage: null 
   }
-
+  
   handleLogin = () => {
     db = firebase.database();
 
@@ -41,18 +41,21 @@ export default class LoginScreen extends React.Component {
         }
       />
       <View style={styles.container}>
+        <Text style={styles.title}>Log In</Text>
+      </View>
+      <View style={styles.container}>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
           <View style={styles.textBox}>
           <TextInput
-            placeholder="  Email"
+            placeholder="Email"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
             style={styles.textInput}
-            onChangeText={emailBuffer => this.setState({ emailBuffer })}
+            onChangeText={email => this.setState({ email })}
             value={this.state.email}
           />
         </View>
@@ -60,12 +63,12 @@ export default class LoginScreen extends React.Component {
         <View style={styles.textBox}>
           <TextInput
             secureTextEntry
-            placeholder="  Password"
+            placeholder="Password"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
             style={styles.textInput}
-            onChangeText={passwordBuffer => this.setState({ passwordBuffer })}
+            onChangeText={password => this.setState({ password })}
             value={this.state.password}
           />
         </View>
@@ -73,7 +76,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.spacer}></View>
         <View style={styles.spacer}></View>
         <View style={[{width: '90%'}]}>
-          <TouchableOpacity style={styles.buttonStyle} onPress={this.handleLogin}>
+          <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('Tab', {})}>
             <Text style={[{fontSize: 15}]}>Log In</Text>
             </TouchableOpacity>
         </View>
@@ -84,6 +87,10 @@ export default class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 80,
+    textShadowColor: 'black'
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -92,7 +99,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 20,
-    marginTop: 8
+    marginTop: 8,
+    textAlign: 'center'
   },
   textBox: {
     borderStyle: 'solid',

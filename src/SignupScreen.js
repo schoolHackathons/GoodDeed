@@ -13,7 +13,6 @@ export default class LoginScreen extends React.Component {
   static navigationOptions = {
     title: 'GoodDeed',
   };
-
   state = { 
     emailBuffer: '', 
     usernameBuffer: '',
@@ -23,7 +22,6 @@ export default class LoginScreen extends React.Component {
   }
 
   handleSignup = () => {
-    //console.log(firebase.database().ref('users/' + 'zprius' + '/'));
     db = firebase.database();
       
     db.ref('users/' + this.state.usernameBuffer + '/').set({
@@ -40,9 +38,12 @@ export default class LoginScreen extends React.Component {
         color='#00b248'
         title="Already have an account?  Log in"
         onPress={() =>
-          this.props.navigationnavigate('Login', {})
+          this.props.navigation.navigate('Login', {})
         }
       />
+      <View style={styles.container}>
+        <Text style={styles.title}>Sign Up</Text>
+      </View>
       <View style={styles.container}>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
@@ -50,7 +51,7 @@ export default class LoginScreen extends React.Component {
           </Text>}
         <View style={styles.textBox}>
           <TextInput
-            placeholder="  Email"
+            placeholder="Email"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -62,7 +63,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.spacer}></View>
         <View style={styles.textBox}>
           <TextInput
-            placeholder="  Username"
+            placeholder="Username"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -75,7 +76,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.textBox}>
           <TextInput
             secureTextEntry
-            placeholder="  Password"
+            placeholder="Password"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -99,6 +100,10 @@ export default class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 80,
+    textShadowColor: 'black'
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -107,7 +112,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 20,
-    marginTop: 8
+    marginTop: 8,
+    textAlign: 'center'
   },
   textBox: {
     borderStyle: 'solid',
