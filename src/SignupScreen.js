@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, StyleSheet, Text, View, Dimensions, TextInput } from 'react-native';
+import {Button, StyleSheet, Text, View, Dimensions, TextInput, TouchableOpacity } from 'react-native';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { createStackNavigator } from 'react-navigation';
 
@@ -12,7 +12,7 @@ export default class LoginScreen extends React.Component {
   static navigationOptions = {
     title: 'GoodDeed',
   };
-  state = { email: '', password: '', errorMessage: null }
+  state = { email: '', username: '', password: '', errorMessage: null }
   handleSignup = () => {
     // TODO: Firebase
   }
@@ -21,6 +21,7 @@ export default class LoginScreen extends React.Component {
     return (
       <View>
       <Button
+        color='#00b248'
         title="Already have an account?  Log in"
         onPress={() =>
           navigate('Login', {})
@@ -31,27 +32,49 @@ export default class LoginScreen extends React.Component {
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
-        <TextInput
-          placeholder="  Email"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
+        <View style={styles.textBox}>
+          <TextInput
+            placeholder="  Email"
+            autoCapitalize="none"
+            underlineColorAndroid='transparent'
+            autoCorrect={false}
+            style={styles.textInput}
+            onChangeText={email => this.setState({ email })}
+            value={this.state.email}
+          />
+        </View>
         <View style={styles.spacer}></View>
-        <TextInput
-          secureTextEntry
-          placeholder="  Password"
-          autoCapitalize="none"
-          style={styles.textInput}
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        />
+        <View style={styles.textBox}>
+          <TextInput
+            placeholder="  Username"
+            autoCapitalize="none"
+            underlineColorAndroid='transparent'
+            autoCorrect={false}
+            style={styles.textInput}
+            onChangeText={username => this.setState({ username })}
+            value={this.state.username}
+          />
+        </View>
+        <View style={styles.spacer}></View>
+        <View style={styles.textBox}>
+          <TextInput
+            secureTextEntry
+            placeholder="  Password"
+            autoCapitalize="none"
+            underlineColorAndroid='transparent'
+            autoCorrect={false}
+            style={styles.textInput}
+            onChangeText={password => this.setState({ password })}
+            value={this.state.password}
+          />
+        </View>
         <View style={styles.spacer}></View>
         <View style={styles.spacer}></View>
         <View style={styles.spacer}></View>
-        <View style={[{width:'90%'}]}>
-          <Button title="Sign Up" onPress={this.handleSignup} />
+        <View style={[{width: '90%'}]}>
+          <TouchableOpacity style={styles.buttonStyle} onPress={this.handleSignup}>
+            <Text style={[{fontSize: 15}]}>Sign Up</Text>
+            </TouchableOpacity>
         </View>
       </View>
       </View>
@@ -67,13 +90,29 @@ const styles = StyleSheet.create({
     marginTop: '40%'
   },
   textInput: {
+    fontSize: 20,
+    marginTop: 8
+  },
+  textBox: {
+    borderStyle: 'solid',
+    borderRadius: 10,
     height: 40,
     width: '90%',
     borderColor: 'gray',
     borderWidth: 1,
-    marginTop: 8
   },
   spacer: {
     height: '10%'
+  },
+  buttonStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 20,
+    borderColor: 'white',
+    backgroundColor: '#66ffa6',
+    overflow: 'hidden',
+    height: 40
   }
 });
