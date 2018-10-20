@@ -37,7 +37,7 @@ export default class LoginScreen extends React.Component {
           </Text>}
         <View style={styles.textBox}>
           <TextInput
-            placeholder="  Email"
+            placeholder="Email"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -49,7 +49,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.spacer}></View>
         <View style={styles.textBox}>
           <TextInput
-            placeholder="  Username"
+            placeholder="Username"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -62,7 +62,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.textBox}>
           <TextInput
             secureTextEntry
-            placeholder="  Password"
+            placeholder="Password"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 20,
-    marginTop: 8
+    marginTop: 8,
+    textAlign: 'center'
   },
   textBox: {
     borderStyle: 'solid',
