@@ -28,6 +28,9 @@ export default class LoginScreen extends React.Component {
         }
       />
       <View style={styles.container}>
+        <Text style={styles.title}>Sign Up</Text>
+      </View>
+      <View style={styles.container}>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
@@ -83,6 +86,10 @@ export default class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 80,
+    textShadowColor: 'black'
+  },
   container: {
     flex: 1,
     alignItems: 'center',
