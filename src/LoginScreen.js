@@ -7,15 +7,29 @@ import TabViewScreen from './TabViewScreen.js';
 import ProfileScreen from './ProfileScreen.js';
 import MapScreen from './MapScreen.js';
 import SocialScreen from './SocialScreen.js';
+import firebase from './Firebase.js';
 
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
     title: 'GoodDeed',
   };
-  state = { email: '', password: '', errorMessage: null }
-  handleLogin = () => {
-    // TODO
+  state = { 
+    emailBuffer: '',
+    passwordBuffer: '', 
+    serviceHoursBuffer: 0,
+    errorMessage: null 
   }
+
+  handleLogin = () => {
+    db = firebase.database();
+
+    db.ref('users/').once("value", function(data) {
+      console.log(data);
+    }); 
+
+    this.props.navigation.navigate('Tab', {});
+  }
+
   render() {
     return (
       <View>
@@ -27,21 +41,18 @@ export default class LoginScreen extends React.Component {
         }
       />
       <View style={styles.container}>
-        <Text style={styles.title}>Log In</Text>
-      </View>
-      <View style={styles.container}>
         {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
           <View style={styles.textBox}>
           <TextInput
-            placeholder="Email"
+            placeholder="  Email"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
             style={styles.textInput}
-            onChangeText={email => this.setState({ email })}
+            onChangeText={emailBuffer => this.setState({ emailBuffer })}
             value={this.state.email}
           />
         </View>
@@ -49,12 +60,12 @@ export default class LoginScreen extends React.Component {
         <View style={styles.textBox}>
           <TextInput
             secureTextEntry
-            placeholder="Password"
+            placeholder="  Password"
             autoCapitalize="none"
             underlineColorAndroid='transparent'
             autoCorrect={false}
             style={styles.textInput}
-            onChangeText={password => this.setState({ password })}
+            onChangeText={passwordBuffer => this.setState({ passwordBuffer })}
             value={this.state.password}
           />
         </View>
@@ -62,7 +73,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.spacer}></View>
         <View style={styles.spacer}></View>
         <View style={[{width: '90%'}]}>
-          <TouchableOpacity style={styles.buttonStyle} onPress={() => this.props.navigation.navigate('Tab', {})}>
+          <TouchableOpacity style={styles.buttonStyle} onPress={this.handleLogin}>
             <Text style={[{fontSize: 15}]}>Log In</Text>
             </TouchableOpacity>
         </View>
@@ -73,10 +84,6 @@ export default class LoginScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 80,
-    textShadowColor: 'black'
-  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -85,8 +92,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontSize: 20,
-    marginTop: 8,
-    textAlign: 'center'
+    marginTop: 8
   },
   textBox: {
     borderStyle: 'solid',

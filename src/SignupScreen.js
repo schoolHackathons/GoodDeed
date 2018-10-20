@@ -24,35 +24,13 @@ export default class LoginScreen extends React.Component {
 
   handleSignup = () => {
     //console.log(firebase.database().ref('users/' + 'zprius' + '/'));
-    userfire = this.state.emailBuffer;
+    db = firebase.database();
       
-    firebase.database().ref('users/' + this.state.usernameBuffer + '/').set({
+    db.ref('users/' + this.state.usernameBuffer + '/').set({
       email: this.state.emailBuffer,
       password: this.state.passwordBuffer,
       serviceHours: this.state.serviceHoursBuffer
     });
-    console.log(
-    firebase.database().ref('users/' + this.state.usernameBuffer + '/').get({
-      email
-    })
-    )
-    
-    /*
-    const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(
-      '<gooddeed-2afa7>',
-      { permissions: ['public_profile'] }
-    );
-
-    if (type === 'success') {
-      // Build Firebase credential with the Facebook access token.
-      const credential = firebase.auth.FacebookAuthProvider.credential(token);
-
-      // Sign in with credential from the Facebook user.
-      firebase.auth().signInWithCredential(credential).catch((error) => {
-        console.log('Error');
-      });
-    }
-    */
   }
 
   render() {
