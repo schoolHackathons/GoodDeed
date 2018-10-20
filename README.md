@@ -1,6 +1,6 @@
-## GoodDeed
+# GoodDeed
 
-#Dependencies:
+## Dependencies:
 
 npm install react-native-tab-view --save
 
