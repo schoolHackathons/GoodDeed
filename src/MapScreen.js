@@ -28,13 +28,7 @@ const MapScreen = () =>  (
                
               coordinate={{latitude: 33.7490, longitude: 84.3880}}
             />
-            <MapViewDirections
-			    origin={{latitude: 33.7490, longitude: 84.3880}}
-			    destination={{latitude: 35, longitude: 85}}
-			    apikey={'AIzaSyAZfTSuGDVg7eU4vn0AJ2a1rchz2T78Scs'}
-			    strokeWidth={3}
-			    strokeColor='hotpink'
-			/>
+            
            </MapView>
         </View>
   </View>

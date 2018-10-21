@@ -4,13 +4,18 @@ import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { createStackNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 
-const person = "Scott"  //NAME
+import TabViewScreen from './TabViewScreen.js';
+import LoginScreen from './LoginScreen.js';
+import MapScreen from './MapScreen.js';
+import SocialScreen from './SocialScreen.js';
+import firebase from './Firebase.js';
+
+
+const person = 'Zachary';  //NAME
 
 const ProfileScreen = () => (
       <View style={styles.container}>
         <View style = {{backgroundColor: 'white', flex:1, width:'100%'}}>
-            {/* <View style={styles.top}>
-            </View> */}
             <View style={styles.pictureholder}>
                 <Ionicons name='md-person' size={150} color='#347200'/>
             </View>

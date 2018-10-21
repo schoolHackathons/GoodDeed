@@ -13,14 +13,10 @@ export default class TabViewScreen extends React.Component {
         headerStyle: {
             backgroundColor: '#53B700',
         },
-        headerTintColor: 'FFFFFF',
-        headerTitleStyle: {
-            color: 'FFFFFF',
-         }
     };
 
     state = {
-        index: 0,
+        index: 1,
         routes: [
             { key: 'first', title: 'Profile' },
             { key: 'second', title: 'Map' },

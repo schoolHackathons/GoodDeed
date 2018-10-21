@@ -16,19 +16,34 @@ export default class LoginScreen extends React.Component {
         backgroundColor: '#1F4500',
     },
   };
-  state = { 
+  state = {
     emailBuffer: '',
+    usernameBuffer: '',
     passwordBuffer: '', 
     serviceHoursBuffer: 0,
     errorMessage: null 
   }
   
   handleLogin = () => {
-    db = firebase.database();
+    console.log(this.state.usernameBuffer);
+    db = firebase.database().ref('users/' + this.state.usernameBuffer);
 
-    db.ref('users/').once("value", function(data) {
-      console.log(data);
-    }); 
+    db.once("value", function(data) {
+        //dataBuffer = JSON.stringify(data);
+        console.log(data);
+        if(data.email == null) {
+          /*
+            firebase.database().ref('users/' + this.state.usernameBuffer + '/').set({
+              email: this.state.emailBuffer,
+              password: this.state.passwordBuffer,
+              serviceHours: this.state.serviceHoursBuffer
+            });
+            */
+            
+        } else {
+            
+        }
+    });
 
     this.props.navigation.navigate('Tab', {});
   }
@@ -150,3 +165,5 @@ const styles = StyleSheet.create({
     bottom: 0
   }
 });
+
+ 

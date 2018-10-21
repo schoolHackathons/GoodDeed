@@ -26,12 +26,16 @@ export default class LoginScreen extends React.Component {
 
   handleSignup = () => {
     db = firebase.database();
-      
+
     db.ref('users/' + this.state.usernameBuffer + '/').set({
       email: this.state.emailBuffer,
       password: this.state.passwordBuffer,
       serviceHours: this.state.serviceHoursBuffer
     });
+
+    alert('Sign Up was Successful!');
+    
+    this.props.navigation.navigate('Login', {});
   }
 
   render() {
@@ -164,3 +168,5 @@ const styles = StyleSheet.create({
     bottom: 0
   }
 });
+
+  
