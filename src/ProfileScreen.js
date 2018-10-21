@@ -35,7 +35,7 @@ const ProfileScreen = () => (
 
 const wideness=Dimensions.get('window').width;
 const font = Platform.OS === 'ios' ? 'Courier' : 'monospace';
-const tempSize = (wideness / (text.length * 0.65));
+const tempSize = (wideness / (person.length * 0.65));
 const maxSize = 150;
 const sizeOfFont = (tempSize>maxSize) ? maxSize : tempSize;
 
