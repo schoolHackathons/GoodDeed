@@ -18,7 +18,7 @@ import RetrieveOrgName from './RetrieveOrgName'
 import RetrieveProfPic from './RetrieveProfPic'
 import RetrieveDesc from './RetrieveDesc'
 import GetOrgIDs from './GetOrgIDs'
-meme = ['Alpharad','GAMERS RISE UP']
+meme = ['Alpharad','GAMERS RISE UP','Memeth Dabbeth Inc., 69420 Meme Street, Meme, MM 69420']
 let pic1 = {
   uri: 'https://i1.wp.com/schoolcraftconnection.com/wp-content/uploads/2018/02/SoupKitchen-ArielSkelly-GettyImages-CruxNowCOM-1.jpg?fit=640%2C360&ssl=1'
 };
@@ -33,8 +33,8 @@ US2 = meme[0]
 DESC1 = <RetrieveDesc/>
 DESC2 = meme[1]
 LOC1 = <RetrieveLocation/>
-LOC2 = 'Memeth Dabbeth Inc., 69420 Meme Street, Meme, MM 69420'
-SocialRectNo = 3;
+LOC2 = meme[2]
+SRN = 0;
 
 class SocialScreen extends React.PureComponent {
   constructor(props) {
@@ -42,10 +42,10 @@ class SocialScreen extends React.PureComponent {
 
     this.state = {
       loading: false,
-      data: [{key: <SocialRect key={1} PIC={pic1} PP={PP1} US={US1} DESC={IDs} LOC={LOC1}/>},{key: <SocialRect key={2} PIC={pic2} PP={PP2} US={US2} DESC={DESC2} LOC={LOC2}/>}],
+      data: [{key: <SocialRect key={SRN} PIC={pic1} PP={<RetrieveProfPic/>} US={<RetrieveOrgName/>} DESC={<RetrieveDesc/>} LOC={<RetrieveLocation/>}/>}],
       error: null,
       refreshing: false,
-      SocialRectNo: 3,
+      SRN: 1,
     };
   }
   
@@ -64,13 +64,10 @@ class SocialScreen extends React.PureComponent {
   }
 
   handleLoadMore = () => {
-    var i;
-    for(i=0;i<8;i++){
-      this.setState({
-        data: [...this.state.data, {key: <SocialRect key={SocialRectNo} PIC={pic1} PP={PP1} US={US1} DESC={DESC1} LOC={LOC1}></SocialRect>}],
-        SocialRectNo: SocialRectNo + 1,
-      })
-    }
+    this.setState({
+      data: [...this.state.data, {key: <SocialRect key={SRN} PIC={pic1} PP={<RetrieveProfPic/>} US={<RetrieveOrgName/>} DESC={<RetrieveDesc/>} LOC={<RetrieveLocation/>}/>}],
+      SRN: this.state.SRN + 1,
+    })
     this.render();
   }
 
@@ -88,7 +85,6 @@ class SocialScreen extends React.PureComponent {
         <FlatList 
           removeClippedSubviews={true}
           data={this.state.data}
-          key={this.SocialRecNo}
           renderItem={({item}) => <View style={styles.container}>{item.key}</View>}
           keyExtractor={item => item.US}
           ListFooterComponent={this.renderFooter}

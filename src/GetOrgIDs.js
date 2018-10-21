@@ -10,7 +10,7 @@ class GetOrgIDs extends React.PureComponent {
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         var that = this;
         axios.post('https://gateway-staging.ncrcloud.com/site/sites/find-by-criteria?pageSize=10&pageNumber=0',{
             'criteria': {

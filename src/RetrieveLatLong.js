@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import {Text,Image} from 'react-native';
+import {Text} from 'react-native';
 
-class RetrieveProfPic extends React.PureComponent {
+class RetrieveOrgName extends React.PureComponent {
     constructor(props){
         super(props);
         this.state = {
-            profPic: '',
+            coordinates: [],
         };
     }
 
@@ -22,7 +22,7 @@ class RetrieveProfPic extends React.PureComponent {
             },
         }).then(function(response) {
             that.setState({
-                profPic: response.data.contact.contactPerson,
+                coordinates: [response.data.coordinates.latitude,response.data.coordinates.longitude],
             });
         })
     }
@@ -33,9 +33,9 @@ class RetrieveProfPic extends React.PureComponent {
 
     render() {
         return (
-            this.state.profPic ? <Image source={{uri: this.state.profPic}} style={{width: 50,height: 50}}/> : <Image source={{uri: 'https://i.stack.imgur.com/34AD2.jpg'}} style={{width: 50,height: 50}}/>
+            this.state.coordinates
         )
     }
 }
 
-export default RetrieveProfPic;
+export default RetrieveOrgName;

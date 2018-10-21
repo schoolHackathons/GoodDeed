@@ -10,7 +10,7 @@ class RetrieveOrgName extends React.PureComponent {
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         var that = this;
         axios.get('https://gateway-staging.ncrcloud.com/site/sites/7da39fda1bdf4bb8952d8a5d2dc0c38c',{
             headers: {
