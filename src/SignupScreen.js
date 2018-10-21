@@ -33,73 +33,81 @@ export default class LoginScreen extends React.Component {
 
   render() {
     return (
-      <View>
-      <Button
-        color='#00b248'
-        title="Already have an account?  Log in"
-        onPress={() =>
-          this.props.navigation.navigate('Login', {})
-        }
-      />
-      <View style={styles.container}>
-        <Text style={styles.title}>Sign Up</Text>
-      </View>
-      <View style={styles.container}>
-        {this.state.errorMessage &&
+      <View style={styles.big}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Sign Up</Text>
+        </View>
+        <View style={styles.formContainer}>
+          {this.state.errorMessage &&
           <Text style={{ color: 'red' }}>
             {this.state.errorMessage}
           </Text>}
-        <View style={styles.textBox}>
-          <TextInput
-            placeholder="Email"
-            autoCapitalize="none"
-            underlineColorAndroid='transparent'
-            autoCorrect={false}
-            style={styles.textInput}
-            onChangeText={emailBuffer => this.setState({ emailBuffer })}
-            value={this.state.email}
-          />
+          <View style={styles.textBox}>
+            <TextInput
+              placeholder="Email"
+              autoCapitalize="none"
+              underlineColorAndroid='transparent'
+              autoCorrect={false}
+              style={styles.textInput}
+              onChangeText={email => this.setState({ email })}
+              value={this.state.email}
+            />
+          </View>
         </View>
-        <View style={styles.spacer}></View>
-        <View style={styles.textBox}>
-          <TextInput
-            placeholder="Username"
-            autoCapitalize="none"
-            underlineColorAndroid='transparent'
-            autoCorrect={false}
-            style={styles.textInput}
-            onChangeText={usernameBuffer => this.setState({ usernameBuffer })}
-            value={this.state.username}
-          />
+        <View style={styles.formContainer}>
+          <View style={styles.textBox}>
+            <TextInput
+              placeholder="Username"
+              autoCapitalize="none"
+              underlineColorAndroid='transparent'
+              autoCorrect={false}
+              style={styles.textInput}
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
+            />
+          </View>
         </View>
-        <View style={styles.spacer}></View>
-        <View style={styles.textBox}>
-          <TextInput
-            secureTextEntry
-            placeholder="Password"
-            autoCapitalize="none"
-            underlineColorAndroid='transparent'
-            autoCorrect={false}
-            style={styles.textInput}
-            onChangeText={passwordBuffer => this.setState({ passwordBuffer })}
-            value={this.state.password}
-          />
+        <View style={styles.formContainer}>
+          <View style={styles.textBox}>
+            <TextInput
+              secureTextEntry
+              placeholder="Password"
+              autoCapitalize="none"
+              underlineColorAndroid='transparent'
+              autoCorrect={false}
+              style={styles.textInput}
+              onChangeText={password => this.setState({ password })}
+              value={this.state.password}
+            />
+          </View>
         </View>
-        <View style={styles.spacer}></View>
-        <View style={styles.spacer}></View>
-        <View style={styles.spacer}></View>
-        <View style={[{width: '90%'}]}>
-          <TouchableOpacity style={styles.buttonStyle} onPress={this.handleSignup}>
-            <Text style={[{fontSize: 15}]}>Sign Up</Text>
+        <View style={styles.buttonContainer}>
+          <View style={[{width: '90%'}]}>
+            <TouchableOpacity style={styles.buttonStyle} onPress={this.handleSignup}>
+              <Text style={[{fontSize: 15}]}>Sign Up</Text>
             </TouchableOpacity>
+          </View>
         </View>
-      </View>
+        <View style={styles.link}>
+          <View style={[{width:'100%'}]}>
+            <Button
+              color='#00b248'
+              title="Already have an account?  Log in"
+              onPress={() =>
+                this.props.navigation.navigate('Login', {})
+              }
+            />
+          </View>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  big: {
+    flex: 1
+  },
   title: {
     fontSize: 80,
     textShadowColor: 'black'
@@ -108,7 +116,20 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '40%'
+    paddingTop: '35%',
+    paddingBottom:'4%'
+  },
+  formContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop:'1%'
+  },
+  buttonContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop:'10%'
   },
   textInput: {
     fontSize: 20,
@@ -123,9 +144,6 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
   },
-  spacer: {
-    height: '10%'
-  },
   buttonStyle: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -136,5 +154,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#66ffa6',
     overflow: 'hidden',
     height: 40
+  },
+  link: {
+    flex: 5,
+    justifyContent: 'flex-end',
+    bottom: 0
   }
 });
