@@ -4,6 +4,8 @@ import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { createStackNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 
+const text = "my name is sponge"
+
 const ProfileScreen = () => (
       <View style={styles.container}>
         <View style = {{backgroundColor: 'white', flex:1, width:'100%'}}>
@@ -18,7 +20,7 @@ const ProfileScreen = () => (
                 <Text
                   // adjustsFontSizeToFit
                   // numberOfLines = {1}
-                  style={styles.name}>cvjghvchrtfgcvcutj</Text>
+                  style={styles.name}>{text}</Text>
             </View>
 
             <View style={styles.nameholder}>
@@ -30,6 +32,12 @@ const ProfileScreen = () => (
         </View>
       </View>
 );
+
+const wideness=Dimensions.get('window').width;
+const font = Platform.OS === 'ios' ? 'Courier' : 'monospace';
+const tempSize = Platform.OS === 'ios' ? (wideness / ((text.length)*0.63)) : (wideness / (text.length * 0.63));
+const maxSize = 150;
+const sizeOfFont = (tempSize>maxSize) ? maxSize : tempSize;
 
 const styles = StyleSheet.create({
   container: {
@@ -49,6 +57,7 @@ const styles = StyleSheet.create({
       // backgroundColor: '#00b248',
       alignItems: 'center',
       justifyContent: 'center',
+      width: wideness,
   },
   top: {
       flex: 1,
@@ -70,7 +79,8 @@ const styles = StyleSheet.create({
   },
   name: {
       color: '#00b248',
-      fontSize: 100,
+      fontSize: sizeOfFont,
+      fontFamily: font,
   },
   othertext: {
       color: '#00b248',
