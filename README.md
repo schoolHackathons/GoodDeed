@@ -1,5 +1,7 @@
 # GoodDeed
 
+need app.json and assets file for icon and splash
+
 ## Dependencies:
 
 npm install react-native-tab-view --save
