@@ -1,10 +1,10 @@
 import React from 'react';
-import {Button, StyleSheet, Text, View, Dimensions } from 'react-native';
+import {Button, StyleSheet, Text, View, Dimensions, Platform } from 'react-native';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { createStackNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 
-const text = "my name is sponge"
+const text = "my name is sponge"  //test
 
 const ProfileScreen = () => (
       <View style={styles.container}>
@@ -15,7 +15,7 @@ const ProfileScreen = () => (
                 <Ionicons name='md-person' size={150} color='#66ffa6'/>
             </View>
         </View>
-        <View style = {{backgroundColor: '#C0C0C0', flex:1, width:'100%'}}>
+        <View style = {{backgroundColor: '#00b248', flex:1, width:'100%', justifyContent: 'center'}}>
             <View style={styles.nameholder}>
                 <Text
                   // adjustsFontSizeToFit
@@ -35,7 +35,7 @@ const ProfileScreen = () => (
 
 const wideness=Dimensions.get('window').width;
 const font = Platform.OS === 'ios' ? 'Courier' : 'monospace';
-const tempSize = Platform.OS === 'ios' ? (wideness / ((text.length)*0.63)) : (wideness / (text.length * 0.63));
+const tempSize = (wideness / (text.length * 0.65));
 const maxSize = 150;
 const sizeOfFont = (tempSize>maxSize) ? maxSize : tempSize;
 
@@ -78,13 +78,16 @@ const styles = StyleSheet.create({
       height: 200,
   },
   name: {
-      color: '#00b248',
+      color: 'white',
       fontSize: sizeOfFont,
       fontFamily: font,
+      textAlign: 'center',
   },
   othertext: {
-      color: '#00b248',
-      fontSize: 30
+      color: 'white',
+      fontSize: 30,
+      textAlign: 'center',
+
   }
 });
 
