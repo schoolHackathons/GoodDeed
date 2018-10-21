@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {Button, 
-        Text, 
-        StyleSheet, 
-        View, 
-        Dimensions, 
-        FlatList, 
-        List, 
-        ListItem, 
+import {Button,
+        Text,
+        StyleSheet,
+        View,
+        Dimensions,
+        FlatList,
+        List,
+        ListItem,
         ActivityIndicator,
         Image,
         SearchBar } from 'react-native';
@@ -48,7 +48,7 @@ class SocialScreen extends React.PureComponent {
       SRN: 1,
     };
   }
-  
+
   handleRefresh = () => {
     this.setState(
       {
@@ -77,12 +77,12 @@ class SocialScreen extends React.PureComponent {
       <View style={{paddingVertical: 20}}>
         <ActivityIndicator animating size='large'/>
       </View>
-    ) 
+    )
   };
 
   render() {
     return (
-        <FlatList 
+        <FlatList
           removeClippedSubviews={true}
           data={this.state.data}
           renderItem={({item}) => <View style={styles.container}>{item.key}</View>}
@@ -100,6 +100,7 @@ class SocialScreen extends React.PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#00e676'
   },
 });
 

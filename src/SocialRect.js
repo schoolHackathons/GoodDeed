@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image} from 'react-native';
 
-class SocialRect extends React.Component { 
+class SocialRect extends React.Component {
   render() {
     let pinPic = {
       uri: 'https://cdn1.iconfinder.com/data/icons/mirrored-twins-icon-set-hollow/512/PixelKit_point_marker_icon.png'
@@ -22,7 +22,7 @@ class SocialRect extends React.Component {
             <Text style={{marginLeft:5,marginRight: 20}}>{this.props.LOC}</Text>
           </View>
         </View>
-      </View>  
+      </View>
     )
   };
 }
@@ -32,8 +32,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderWidth: 1,
-    margin: 5,
+    margin: 10,
+    marginBottom: 20,
     borderRadius: 15,
+    borderColor: '#69e2ff',
+    backgroundColor: 'white'
   },
   header: {
     flex: 1,
@@ -45,6 +48,7 @@ const styles = StyleSheet.create({
   picture: {
     flex: 4,
     backgroundColor: '#000000',
+    margin: 5
   },
   footer: {
     marginVertical: 5,
