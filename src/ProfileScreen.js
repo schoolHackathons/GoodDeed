@@ -4,7 +4,7 @@ import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { createStackNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 
-const text = "my name is beesus"  //test
+const person = "Scott"  //NAME
 
 const ProfileScreen = () => (
       <View style={styles.container}>
@@ -20,7 +20,7 @@ const ProfileScreen = () => (
                 <Text
                   // adjustsFontSizeToFit
                   // numberOfLines = {1}
-                  style={styles.name}>{text}</Text>
+                  style={styles.name}>{person}</Text>
             </View>
 
             <View style={styles.nameholder}>
