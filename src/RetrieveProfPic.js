@@ -12,7 +12,7 @@ class RetrieveProfPic extends React.PureComponent {
 
     componentWillMount() {
         var that = this;
-        axios.get('https://gateway-staging.ncrcloud.com/site/sites/7da39fda1bdf4bb8952d8a5d2dc0c38c',{
+        axios.get('https://gateway-staging.ncrcloud.com/site/sites/'+this.props.id,{
             headers: {
                 'nep-application-key': '8a0084a165d712fd01668f1e973c005d',
             },
