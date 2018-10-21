@@ -1,69 +1,43 @@
 import React from 'react';
-import {Button, StyleSheet, Text, View, Dimensions } from 'react-native';
+import {Button, StyleSheet, Text, View, Dimensions, TextInput, TouchableOpacity } from 'react-native';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { createStackNavigator } from 'react-navigation';
 import MapView from 'react-native-maps';
+import { SearchBar } from 'react-native-elements';
+import MapViewDirections from 'react-native-maps-directions';
+//import getDirections from 'react-native-google-maps-directions';
 
-const MapScreen = () =>  (        //becomes class that extends the Component class
+const MapScreen = () =>  (
 
-  // state={ markers: [{
-  //   title: 'hello',
-  //   coordinates: {
-  //     latitude: 3.148561,
-  //     longitude: 101.652778
-  //   },
-  // },
-  // {
-  //   title: 'hello',
-  //   coordinates: {
-  //     latitude: 3.149771,
-  //     longitude: 101.655449
-  //   },
-  // }]};
+  <View style={{flex:1}}>
+        <View style={{flex: 1, flexDirection: 'column', shadowOpacity: 50, shadowRadius: 5}}>
+           	
+           <SearchBar placeholder='Search Location...' />
 
-//
-//   getInitialState() {
-//     return {
-//       region: {
-//         latitude: 37.78825,
-//         longitude: -122.4324,
-//         latitudeDelta: 0.0922,
-//         longitudeDelta: 0.0421,
-//       },
-//     };
-//   }
-//
-//   onRegionChange(region) {
-//     this.setState({ region });
-//   }
-
-      <View style={{flex:1}}>
-            <View style={{flex: 1}}>
-            </View>
-
-            <View style={{flex: 4, flexDirection: 'row', justifyContent: 'center', alignItems: 'center', shadowOpacity: 50, shadowRadius: 5}}>
-                <MapView
-                style={{width: '100%', height: '100%'}}
-                initialRegion={{
-                  latitude: 37.78825,
-                  longitude: -122.4324,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421,
-                }}
-              // region={this.state.region}
-              // onRegionChange={this.onRegionChange}
-                >
-               <MapView.Marker
-                   // coordinate={marker.latlng}
-                   // title={marker.title}
-                   // description={marker.description}
-
-                  coordinate={{latitude: 37.38825, longitude: -122.4324}}
-                />
-               </MapView>
-            </View>
-      </View>
-
+           <MapView
+            provider = 'google'
+            style={{width: '100%', height: '100%'}}
+            initialRegion={{
+              latitude: 33.7490,
+              longitude: 84.3880,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+            >
+           <MapView.Marker
+               
+              coordinate={{latitude: 33.7490, longitude: 84.3880}}
+            />
+            <MapViewDirections
+			    origin={{latitude: 33.7490, longitude: 84.3880}}
+			    destination={{latitude: 35, longitude: 85}}
+			    apikey={'AIzaSyAZfTSuGDVg7eU4vn0AJ2a1rchz2T78Scs'}
+			    strokeWidth={3}
+			    strokeColor='hotpink'
+			/>
+           </MapView>
+        </View>
+  </View>
 );
 
 export default MapScreen;
