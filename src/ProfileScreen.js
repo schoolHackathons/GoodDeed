@@ -11,16 +11,16 @@ import SocialScreen from './SocialScreen.js';
 import firebase from './Firebase.js';
 
 
-const person = 'Zachary';  //NAME
+const person = 'Hackerman BigSexy6';  //NAME
 
 const ProfileScreen = () => (
       <View style={styles.container}>
         <View style = {{backgroundColor: 'white', flex:1, width:'100%'}}>
             <View style={styles.pictureholder}>
-                <Ionicons name='md-person' size={150} color='#347200'/>
+                <Ionicons name='md-person' size={150} color='#00e676'/>
             </View>
         </View>
-        <View style = {{backgroundColor: '#BEBEBE', flex:1, width:'100%', justifyContent: 'center'}}>
+        <View style = {{backgroundColor: '#00b248', flex:1, width:'100%', justifyContent: 'center', shadowOpacity:1, shadowRadius: 5}}>
             <View style={styles.nameholder}>
                 <Text
                   // adjustsFontSizeToFit
@@ -40,7 +40,7 @@ const ProfileScreen = () => (
 
 const wideness=Dimensions.get('window').width;
 const font = Platform.OS === 'ios' ? 'Courier' : 'monospace';
-const tempSize = (wideness / (person.length * 0.65));
+const tempSize = (wideness / (person.length * 0.90));
 const maxSize = 150;
 const sizeOfFont = (tempSize>maxSize) ? maxSize : tempSize;
 
@@ -89,8 +89,9 @@ const styles = StyleSheet.create({
       textAlign: 'center',
   },
   othertext: {
-      color: '#347200',
+      color: '#1F4500',
       fontSize: 30,
+      fontFamily: font,
       textAlign: 'center',
 
   }

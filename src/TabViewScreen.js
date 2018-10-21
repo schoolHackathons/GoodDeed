@@ -11,7 +11,7 @@ export default class TabViewScreen extends React.Component {
     static navigationOptions = {
         title: 'GoodDeed',
         headerStyle: {
-            backgroundColor: '#53B700',
+            backgroundColor: '#00e676',
         },
     };
 
@@ -35,7 +35,7 @@ export default class TabViewScreen extends React.Component {
                     third: SocialScreen,
                 })}
                 renderTabBar={props =>
-                <TabBar{...props} style={{backgroundColor:'#BEBEBE'}} tabStyle={{backgroundColor:'#449600'}}/>
+                <TabBar{...props} style={{backgroundColor:'#00b248'}} tabStyle={{backgroundColor:'#00b248'}}/>
                 }
                 onIndexChange={index => this.setState({ index })}
                 //initialLayout={{ width: Dimensions.get('window').width }}

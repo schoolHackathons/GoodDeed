@@ -13,17 +13,17 @@ export default class LoginScreen extends React.Component {
   static navigationOptions = {
     title: 'GoodDeed',
     headerStyle: {
-        backgroundColor: '#1F4500',
+        backgroundColor: '#00e676',
     },
   };
   state = {
     emailBuffer: '',
     usernameBuffer: '',
-    passwordBuffer: '', 
+    passwordBuffer: '',
     serviceHoursBuffer: 0,
-    errorMessage: null 
+    errorMessage: null
   }
-  
+
   handleLogin = () => {
     console.log(this.state.usernameBuffer);
     db = firebase.database().ref('users/' + this.state.usernameBuffer);
@@ -39,9 +39,9 @@ export default class LoginScreen extends React.Component {
               serviceHours: this.state.serviceHoursBuffer
             });
             */
-            
+
         } else {
-            
+
         }
     });
 
@@ -52,7 +52,7 @@ export default class LoginScreen extends React.Component {
     return (
       <View style={styles.big}>
         <View style={styles.container}>
-          <Text style={styles.title}>Log In</Text>
+          {/* <Text style={styles.title}>Log In</Text> */}
         </View>
         <View style={styles.formContainer}>
           {this.state.errorMessage &&
@@ -88,14 +88,14 @@ export default class LoginScreen extends React.Component {
         <View style={styles.buttonContainer}>
           <View style={[{width: '90%'}]}>
             <TouchableOpacity style={styles.buttonStyle} onPress={this.handleLogin}>
-              <Text style={[{fontSize: 15}]}>Log In</Text>
+              <Text style={[{fontSize: 15, color: 'white'}]}>Log In</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={styles.link}>
           <View style={[{width:'100%'}]}>
             <Button
-              color='#1F4500'
+              color='#00b248'
               title="Don't have an account?  Sign up"
               onPress={() =>
                 this.props.navigation.navigate('Signup', {})
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     borderColor: 'white',
-    backgroundColor: '#53B700',
+    backgroundColor: '#00e676',
     overflow: 'hidden',
     height: 40
   },
@@ -165,5 +165,3 @@ const styles = StyleSheet.create({
     bottom: 0
   }
 });
-
- 

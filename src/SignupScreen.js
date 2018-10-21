@@ -9,19 +9,19 @@ import MapScreen from './MapScreen.js';
 import SocialScreen from './SocialScreen.js';
 import firebase from './Firebase.js';
 
-export default class LoginScreen extends React.Component {
+export default class SignupScreen extends React.Component {
   static navigationOptions = {
     title: 'GoodDeed',
     headerStyle: {
-        backgroundColor: '#1F4500',
+        backgroundColor: '#00e676',
     },
   };
-  state = { 
-    emailBuffer: '', 
+  state = {
+    emailBuffer: '',
     usernameBuffer: '',
-    passwordBuffer: '', 
+    passwordBuffer: '',
     serviceHoursBuffer: 0,
-    errorMessage: null 
+    errorMessage: null
   }
 
   handleSignup = () => {
@@ -34,7 +34,7 @@ export default class LoginScreen extends React.Component {
     });
 
     alert('Sign Up was Successful!');
-    
+
     this.props.navigation.navigate('Login', {});
   }
 
@@ -91,14 +91,14 @@ export default class LoginScreen extends React.Component {
         <View style={styles.buttonContainer}>
           <View style={[{width: '90%'}]}>
             <TouchableOpacity style={styles.buttonStyle} onPress={this.handleSignup}>
-              <Text style={[{fontSize: 15}]}>Sign Up</Text>
+              <Text style={[{fontSize: 15, color:'white'}]}>Sign Up</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={styles.link}>
           <View style={[{width:'100%'}]}>
             <Button
-              color='#1F4500'
+              color='#00b248'
               title="Already have an account?  Log in"
               onPress={() =>
                 this.props.navigation.navigate('Login', {})
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     borderColor: 'white',
-    backgroundColor: '#53B700',
+    backgroundColor: '#00e676',
     overflow: 'hidden',
     height: 40
   },
@@ -168,5 +168,3 @@ const styles = StyleSheet.create({
     bottom: 0
   }
 });
-
-  
