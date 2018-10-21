@@ -12,6 +12,9 @@ import firebase from './Firebase.js';
 export default class LoginScreen extends React.Component {
   static navigationOptions = {
     title: 'GoodDeed',
+    headerStyle: {
+        backgroundColor: '#1F4500',
+    },
   };
   state = { 
     emailBuffer: '', 
@@ -91,7 +94,7 @@ export default class LoginScreen extends React.Component {
         <View style={styles.link}>
           <View style={[{width:'100%'}]}>
             <Button
-              color='#00b248'
+              color='#1F4500'
               title="Already have an account?  Log in"
               onPress={() =>
                 this.props.navigation.navigate('Login', {})
@@ -151,7 +154,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     borderColor: 'white',
-    backgroundColor: '#66ffa6',
+    backgroundColor: '#53B700',
     overflow: 'hidden',
     height: 40
   },

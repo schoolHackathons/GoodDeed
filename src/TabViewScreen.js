@@ -10,6 +10,13 @@ import SocialScreen from './SocialScreen.js';
 export default class TabViewScreen extends React.Component {
     static navigationOptions = {
         title: 'GoodDeed',
+        headerStyle: {
+            backgroundColor: '#53B700',
+        },
+        headerTintColor: 'FFFFFF',
+        headerTitleStyle: {
+            color: 'FFFFFF',
+         }
     };
 
     state = {
@@ -31,6 +38,9 @@ export default class TabViewScreen extends React.Component {
                     second: MapScreen,
                     third: SocialScreen,
                 })}
+                renderTabBar={props =>
+                <TabBar{...props} style={{backgroundColor:'#BEBEBE'}} tabStyle={{backgroundColor:'#449600'}}/>
+                }
                 onIndexChange={index => this.setState({ index })}
                 //initialLayout={{ width: Dimensions.get('window').width }}
             />

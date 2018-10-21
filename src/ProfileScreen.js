@@ -4,7 +4,7 @@ import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 import { createStackNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 
-const text = "my name is sponge"  //test
+const text = "my name is beesus"  //test
 
 const ProfileScreen = () => (
       <View style={styles.container}>
@@ -12,10 +12,10 @@ const ProfileScreen = () => (
             {/* <View style={styles.top}>
             </View> */}
             <View style={styles.pictureholder}>
-                <Ionicons name='md-person' size={150} color='#66ffa6'/>
+                <Ionicons name='md-person' size={150} color='#347200'/>
             </View>
         </View>
-        <View style = {{backgroundColor: '#00b248', flex:1, width:'100%', justifyContent: 'center'}}>
+        <View style = {{backgroundColor: '#BEBEBE', flex:1, width:'100%', justifyContent: 'center'}}>
             <View style={styles.nameholder}>
                 <Text
                   // adjustsFontSizeToFit
@@ -78,13 +78,13 @@ const styles = StyleSheet.create({
       height: 200,
   },
   name: {
-      color: 'white',
+      color: '#1F4500',
       fontSize: sizeOfFont,
       fontFamily: font,
       textAlign: 'center',
   },
   othertext: {
-      color: 'white',
+      color: '#347200',
       fontSize: 30,
       textAlign: 'center',
 
