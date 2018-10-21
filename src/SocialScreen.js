@@ -8,29 +8,33 @@ import {Button,
         List, 
         ListItem, 
         ActivityIndicator,
+        Image,
         SearchBar } from 'react-native';
 //import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 //import { createStackNavigator } from 'react-navigation';
 import SocialRect from './SocialRect';
 import RetrieveLocation from './RetrieveLocation'
+import RetrieveOrgName from './RetrieveOrgName'
+import RetrieveProfPic from './RetrieveProfPic'
+import RetrieveDesc from './RetrieveDesc'
+import GetOrgIDs from './GetOrgIDs'
+meme = ['Alpharad','GAMERS RISE UP']
 let pic1 = {
-  uri: 'https://i.imgur.com/xFqtpPf.jpg'
+  uri: 'https://i1.wp.com/schoolcraftconnection.com/wp-content/uploads/2018/02/SoupKitchen-ArielSkelly-GettyImages-CruxNowCOM-1.jpg?fit=640%2C360&ssl=1'
 };
 let pic2 = {
   uri: 'https://i.imgur.com/lh9OPWJ.png'
 };
-let PP1 = {
-  uri: 'https://i.imgur.com/3p1Nh2D.jpg'
-};
-let PP2 = {
-  uri: 'https://pbs.twimg.com/profile_images/1050413398498926593/Cgy_nQVl_bigger.jpg'
-}; 
-US1 = 'ApprovedCargo91'
-US2 = 'Alpharad'
-DESC1 = 'High contrast photos of fruit floating threateningly, specifically Chaquita bananas'
-DESC2 = 'GAMERS RISE UP';
-LOC1 = <RetrieveLocation></RetrieveLocation>
+IDs = <GetOrgIDs/>
+PP1 = <RetrieveProfPic/>;
+PP2 = <Image source={{uri: 'https://pbs.twimg.com/profile_images/1050413398498926593/Cgy_nQVl_bigger.jpg'}}/>
+US1 = <RetrieveOrgName/>
+US2 = meme[0]
+DESC1 = <RetrieveDesc/>
+DESC2 = meme[1]
+LOC1 = <RetrieveLocation/>
 LOC2 = 'Memeth Dabbeth Inc., 69420 Meme Street, Meme, MM 69420'
+SocialRectNo = 3;
 
 class SocialScreen extends React.PureComponent {
   constructor(props) {
@@ -38,9 +42,10 @@ class SocialScreen extends React.PureComponent {
 
     this.state = {
       loading: false,
-      data: [{key: <SocialRect PIC={pic1} PP={PP1} US={US1} DESC={DESC1} LOC={LOC1}></SocialRect>},{key: <SocialRect PIC={pic2} PP={PP2} US={US2} DESC={DESC2} LOC={LOC2}></SocialRect>}],
+      data: [{key: <SocialRect key={1} PIC={pic1} PP={PP1} US={US1} DESC={IDs} LOC={LOC1}/>},{key: <SocialRect key={2} PIC={pic2} PP={PP2} US={US2} DESC={DESC2} LOC={LOC2}/>}],
       error: null,
       refreshing: false,
+      SocialRectNo: 3,
     };
   }
   
@@ -62,7 +67,8 @@ class SocialScreen extends React.PureComponent {
     var i;
     for(i=0;i<8;i++){
       this.setState({
-        data: [...this.state.data, {key: <SocialRect PIC={pic1} PP={PP1} US={US1} DESC={DESC1} LOC={LOC1}></SocialRect>}]
+        data: [...this.state.data, {key: <SocialRect key={SocialRectNo} PIC={pic1} PP={PP1} US={US1} DESC={DESC1} LOC={LOC1}></SocialRect>}],
+        SocialRectNo: SocialRectNo + 1,
       })
     }
     this.render();
@@ -82,6 +88,7 @@ class SocialScreen extends React.PureComponent {
         <FlatList 
           removeClippedSubviews={true}
           data={this.state.data}
+          key={this.SocialRecNo}
           renderItem={({item}) => <View style={styles.container}>{item.key}</View>}
           keyExtractor={item => item.US}
           ListFooterComponent={this.renderFooter}

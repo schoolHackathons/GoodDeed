@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import {Text} from 'react-native';
+import {Text,Image} from 'react-native';
 
-class RetrieveLocation extends React.PureComponent {
+class RetrieveProfPic extends React.PureComponent {
     constructor(props){
         super(props);
         this.state = {
-            city: [],
+            profPic: '',
         };
     }
 
@@ -22,11 +22,7 @@ class RetrieveLocation extends React.PureComponent {
             },
         }).then(function(response) {
             that.setState({
-                siteName: response.data.siteName,
-                street: response.data.address.street, 
-                city: response.data.address.city,
-                state: response.data.address.state,
-                postalCode: response.data.address.postalCode,
+                profPic: response.data.contact.contactPerson,
             });
         })
     }
@@ -37,9 +33,9 @@ class RetrieveLocation extends React.PureComponent {
 
     render() {
         return (
-            <Text>{this.state.siteName+' @ '+this.state.street+', '+this.state.city+', '+this.state.state+' '+this.state.postalCode}</Text>
+            this.state.profPic ? <Image source={{uri: this.state.profPic}} style={{width: 50,height: 50}}/> : <Image source={{uri: 'https://i.stack.imgur.com/34AD2.jpg'}} style={{width: 50,height: 50}}/>
         )
     }
 }
 
-export default RetrieveLocation;
+export default RetrieveProfPic;

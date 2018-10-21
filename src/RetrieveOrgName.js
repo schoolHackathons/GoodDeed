@@ -2,11 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import {Text} from 'react-native';
 
-class RetrieveLocation extends React.PureComponent {
+class RetrieveOrgName extends React.PureComponent {
     constructor(props){
         super(props);
         this.state = {
-            city: [],
+            enterpriseUnitName: [],
         };
     }
 
@@ -22,11 +22,7 @@ class RetrieveLocation extends React.PureComponent {
             },
         }).then(function(response) {
             that.setState({
-                siteName: response.data.siteName,
-                street: response.data.address.street, 
-                city: response.data.address.city,
-                state: response.data.address.state,
-                postalCode: response.data.address.postalCode,
+                enterpriseUnitName: response.data.enterpriseUnitName,
             });
         })
     }
@@ -37,9 +33,9 @@ class RetrieveLocation extends React.PureComponent {
 
     render() {
         return (
-            <Text>{this.state.siteName+' @ '+this.state.street+', '+this.state.city+', '+this.state.state+' '+this.state.postalCode}</Text>
+            <Text>{this.state.enterpriseUnitName}</Text>
         )
     }
 }
 
-export default RetrieveLocation;
+export default RetrieveOrgName;

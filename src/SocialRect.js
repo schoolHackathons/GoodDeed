@@ -5,11 +5,11 @@ class SocialRect extends React.Component {
   render() {
     let pinPic = {
       uri: 'https://cdn1.iconfinder.com/data/icons/mirrored-twins-icon-set-hollow/512/PixelKit_point_marker_icon.png'
-    }; 
+    };
     return(
       <View style={styles.container}>
         <View style={styles.header}>
-          <Image source={this.props.PP} style={{width: 50,height: 50}}/>
+          {this.props.PP}
           <Text style={{margin: 10,fontSize: 20,fontWeight: '300'}}>{this.props.US}</Text>
         </View>
         <View style={styles.picture}>
@@ -27,6 +27,7 @@ class SocialRect extends React.Component {
   };
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    //backgroundColor: '#ffffff',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     margin: 10,
     flexDirection: 'row',
@@ -46,8 +47,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   footer: {
-    //flex: 1,
-    //backgroundColor: '#ffffff',
     marginVertical: 5,
     marginHorizontal: 10,
   },
