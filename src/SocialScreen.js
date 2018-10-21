@@ -32,13 +32,13 @@ DESC2 = 'GAMERS RISE UP';
 LOC1 = <RetrieveLocation></RetrieveLocation>
 LOC2 = 'Memeth Dabbeth Inc., 69420 Meme Street, Meme, MM 69420'
 
-class SocialScreen extends Component {
+class SocialScreen extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       loading: false,
-      data: [{key: <SocialRect PIC={pic1} PP={PP1} US={US1} DESC={DESC1} LOC={LOC1}></SocialRect>},{key: <SocialRect PIC={pic2} PP={PP2} US={US2} DESC={DESC2} LOC={LOC2}></SocialRect>},{key: <SocialRect PIC={pic1} PP={PP1} US={US1} DESC={DESC1}></SocialRect>},{key: <SocialRect PIC={pic1} PP={PP1} US={US1} DESC={DESC1}></SocialRect>}],
+      data: [{key: <SocialRect PIC={pic1} PP={PP1} US={US1} DESC={DESC1} LOC={LOC1}></SocialRect>},{key: <SocialRect PIC={pic2} PP={PP2} US={US2} DESC={DESC2} LOC={LOC2}></SocialRect>}],
       error: null,
       refreshing: false,
     };
@@ -59,10 +59,13 @@ class SocialScreen extends Component {
   }
 
   handleLoadMore = () => {
-    this.setState({
-      data: [...this.state.data, {key: <SocialRect PIC={pic1} PP={PP1} US={US1} DESC={DESC1} LOC={LOC1}></SocialRect>}]
-    })
-    this.render()
+    var i;
+    for(i=0;i<8;i++){
+      this.setState({
+        data: [...this.state.data, {key: <SocialRect PIC={pic1} PP={PP1} US={US1} DESC={DESC1} LOC={LOC1}></SocialRect>}]
+      })
+    }
+    this.render();
   }
 
   renderFooter = () => {
@@ -76,7 +79,8 @@ class SocialScreen extends Component {
 
   render() {
     return (
-        <FlatList
+        <FlatList 
+          removeClippedSubviews={true}
           data={this.state.data}
           renderItem={({item}) => <View style={styles.container}>{item.key}</View>}
           keyExtractor={item => item.US}
@@ -84,7 +88,7 @@ class SocialScreen extends Component {
           refreshing={this.state.refreshing}
           onRefresh={this.handleRefresh}
           onEndReached={this.handleLoadMore}
-          onEndThreshold={0}
+          onEndThreshold={1000}
       />
     )
   }
