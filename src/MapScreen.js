@@ -46,7 +46,8 @@ class MapScreen extends React.PureComponent {
     return(
       <View style={{flex:1}}>
             <View style={{flex: 1, flexDirection: 'column', shadowOpacity: 50, shadowRadius: 5}}>
-
+              <SearchBar lightTheme
+                        placeholder='Search Location...'/>
               <View>
                <MapView
                 provider = 'google'
@@ -59,8 +60,7 @@ class MapScreen extends React.PureComponent {
                   longitudeDelta: 0.0121,
                 }}
               >
-                <SearchBar lightTheme
-                          placeholder='Search Location...'/>
+
 
                 {this.state.markers.map(marker => (
                <MapView.Marker
